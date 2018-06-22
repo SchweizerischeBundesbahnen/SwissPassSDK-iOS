@@ -12,7 +12,7 @@ Die Authentifizierung eines Benutzers beim SwissPass Login basiert auf dem Proto
 
 * Wird ein vom SwissPass Login ausgestelltes Access Token für den Zugriff auf weitere Services resp. Daten verwendet, dann muss dieses den entsprechenden Requests als Bearer Token mitgegeben werden. Siehe dazu RFC 6750 unter https://tools.ietf.org/html/rfc6750. Die App muss in diesem Fall das Fehlerhandling gemäss OAuth 2.0 implementieren.
 * OAuth Bearer Tokens können via Token Introspection beim SwissPass IAM validiert werden, siehe dazu RFC 7662 unter https://tools.ietf.org/html/rfc7662.
-* Wird ein vom SwissPass Login ausgestelltes Access Token via SDK erneuert, dann kann es in seltenen Fällen vorkommen, dass diese Operation fehlschlägt. In diesem Fall wird in ein SwissPassLoginError.invalidToken vom SDK zurückgegeben und die App muss ein erneutes Login für den Benutzer durchführen.
+* Wird ein vom SwissPass Login ausgestelltes Access Token via SDK erneuert, dann kann es in seltenen Fällen vorkommen, dass diese Operation fehlschlägt. In diesem Fall wird entweder ein SwissPassLoginError.invalidToken oder ein SwissPassLoginError.invalidGrant vom SDK zurückgegeben und die App muss ein erneutes Login für den Benutzer durchführen. Tritt ein ein SwissPassLoginError.invalidJSON oder ein SwissPassLoginError.unknownError auf, dann kann ein Retry ausgeführt werden (tritt das Problem länger auf, dann sollte SwissPass kontaktiert  werden).
 
 ### SwissPassMobile
 
@@ -56,7 +56,7 @@ end
 
 Grundsätzlich gelten folgende Anforderungen:
 * iOS 9+
-* Swift 3.3 (Xcode 9.3) 
+* Swift 3.3 (Xcode 9.4) 
 
 ## Weiterführende Informationen
 
