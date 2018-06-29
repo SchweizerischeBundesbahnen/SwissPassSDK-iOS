@@ -23,7 +23,7 @@ Der SwissPassMobile ist eine virtualisierte SwissPass-Karte. Dieser kann mit dem
 
 ## Verwendung des Frameworks
 
-Das SDK basiert ist in Swift 3.3 geschrieben. Es muss darum sichergestellt werden, dass die *Swift Standard Libraries* auf jeden Fall mit integriert werden. D.h. die Einstellung *Embedded Content Contains Swift Code* (EMBEDDED_CONTENT_CONTAINS_SWIFT) muss auf *YES* gesetzt werden.
+Das SDK ist in Swift 3.3 geschrieben. Es muss darum sichergestellt werden, dass die *Swift Standard Libraries* auf jeden Fall mit integriert werden. D.h. die Einstellung *Embedded Content Contains Swift Code* (EMBEDDED_CONTENT_CONTAINS_SWIFT) muss auf *YES* gesetzt werden.
 
 * Bitcode wird ab Version 2.0 unterstützt. 
 * Die allenfalls auftretende Warnung itms-90080 kann ignoriert werden, da Frameworks immer PIE sind; siehe auch [Position Independent Executable](https://developer.apple.com/library/content/qa/qa1788/_index.html#/apple_ref/doc/uid/DTS40013354)
