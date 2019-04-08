@@ -1,6 +1,6 @@
 # SwissPassClient SDK für iOS
 
-Copyright (C) Schweizerische Bundesbahnen SBB, 2016-2018
+Copyright (C) Schweizerische Bundesbahnen SBB, 2016-2019
 
 ## Übersicht
 
@@ -23,7 +23,7 @@ Der SwissPassMobile ist eine virtualisierte SwissPass-Karte. Dieser kann mit dem
 
 ## Verwendung des Frameworks
 
-Das SDK ist in Swift 3.3 geschrieben. Es muss darum sichergestellt werden, dass die *Swift Standard Libraries* auf jeden Fall mit integriert werden. D.h. die Einstellung *Embedded Content Contains Swift Code* (EMBEDDED_CONTENT_CONTAINS_SWIFT) muss auf *YES* gesetzt werden.
+Das SDK ist in Swift 5 geschrieben. Es muss darum sichergestellt werden, dass die *Swift Standard Libraries* auf jeden Fall mit integriert werden. D.h. die Einstellung *Embedded Content Contains Swift Code* (EMBEDDED_CONTENT_CONTAINS_SWIFT) muss auf *YES* gesetzt werden.
 
 * Bitcode wird ab Version 2.0 unterstützt. 
 * Die allenfalls auftretende Warnung itms-90080 kann ignoriert werden, da Frameworks immer PIE sind; siehe auch [Position Independent Executable](https://developer.apple.com/library/content/qa/qa1788/_index.html#/apple_ref/doc/uid/DTS40013354)
@@ -48,7 +48,7 @@ inhibit_all_warnings!
 source 'https://github.com/SchweizerischeBundesbahnen/SBBCocoaPods-Ext.git'
 
 target 'MyAppUsingSwissPassClient' do
-pod 'SwissPassClient', '~> 2.0.0'
+pod 'SwissPassClient', '~> 2.1.0'
 end
 ```
 
@@ -56,7 +56,7 @@ end
 
 Grundsätzlich gelten folgende Anforderungen:
 * iOS 9+
-* Swift 3.3 (Xcode 9.4) 
+* Swift 5 (Xcode 10.2) 
 
 ## Weiterführende Informationen
 
