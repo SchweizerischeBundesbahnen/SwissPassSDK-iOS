@@ -1,4 +1,4 @@
-# SwissPassClient SDK für iOS
+#SwissPassClient SDK für iOS
 
 Copyright (C) Schweizerische Bundesbahnen SBB, 2016-2019
 
@@ -19,11 +19,13 @@ Die Authentifizierung eines Benutzers beim SwissPass Login basiert auf dem Proto
 Der SwissPassMobile ist eine virtualisierte SwissPass-Karte. Dieser kann mit dem SDK durch den SwissPassMobileViewController angezeigt werden, dabei gilt es folgende Punkte zu beachten:
 
 * Der SwissPassMobile kann vom Benutzer in bis zu 10 Apps gleichzeitig aktiviert werden. Bei mehr als 10 Aktivierungen werden bereits bestehende Aktivierungen automatisch gelöscht.
-* Bei einem Logout wird die bestehende Aktivierung auf dem SwissPass deaktiviert. Dies funktioniert aber nur bei einer bestehenden Internet-Verbindung; lokal ist die Instanz aber auf jeden Fall nicht mehr aktiv.
+* Bei einem Logout wird die bestehende Aktivierung auf dem SwissPass nicht deaktiviert. Beim darauf folgenden Login wird geprüft ob sich derselbe Benutzer wieder einloggt, falls dies nicht der Fall ist wird der ggf. bestehende SwissPassMobile deaktiviert.
 
 ## Verwendung des Frameworks
 
-Das SDK ist in Swift 5 geschrieben. Es muss darum sichergestellt werden, dass die *Swift Standard Libraries* auf jeden Fall mit integriert werden. D.h. die Einstellung *Embedded Content Contains Swift Code* (EMBEDDED_CONTENT_CONTAINS_SWIFT) muss auf *YES* gesetzt werden.
+Das SDK ist in Swift 5 geschrieben und mit *Build Libraries for Distribution* compiliert. Objective-C Compatibility Headers werden dabei nicht installiert.
+
+Es muss darum sichergestellt werden, dass die *Swift Standard Libraries* auf jeden Fall mit integriert werden. D.h. die Einstellung *Embedded Content Contains Swift Code* (EMBEDDED_CONTENT_CONTAINS_SWIFT) muss auf *YES* gesetzt werden.
 
 * Bitcode wird ab Version 2.0 unterstützt. 
 * Die allenfalls auftretende Warnung itms-90080 kann ignoriert werden, da Frameworks immer PIE sind; siehe auch [Position Independent Executable](https://developer.apple.com/library/content/qa/qa1788/_index.html#/apple_ref/doc/uid/DTS40013354)
@@ -48,15 +50,15 @@ inhibit_all_warnings!
 source 'https://github.com/SchweizerischeBundesbahnen/SBBCocoaPods-Ext.git'
 
 target 'MyAppUsingSwissPassClient' do
-pod 'SwissPassClient', '~> 2.2.0'
+pod 'SwissPassClient', '~> 2.2.1'
 end
 ```
 
 ### Anforderungen
 
 Grundsätzlich gelten folgende Anforderungen:
-* iOS 9+
-* Swift 5 (Xcode 10.2) 
+* iOS 9.0+
+* Swift 5.1 (Xcode 11.0) 
 
 ## Weiterführende Informationen
 
