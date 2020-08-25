@@ -65,7 +65,3 @@ Grundsätzlich gelten folgende Anforderungen:
 ### Kontakt
 
 Allgemeine Anfragen, Anregungen und Feedback können über die NOVA UserGroup resp. den SwissPass gemacht werden.
-
-### Beispiele
-
-Eine Demo App ist unter https://code-ext.sbb.ch/projects/SID/repos/swisspassclientsdk/browse zu finden.
