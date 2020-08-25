@@ -50,7 +50,7 @@ inhibit_all_warnings!
 source 'https://github.com/SchweizerischeBundesbahnen/SBBCocoaPods-Ext.git'
 
 target 'MyAppUsingSwissPassClient' do
-pod 'SwissPassClient', '~> 2.2.1'
+pod 'SwissPassClient', '~> 2.3.5'
 end
 ```
 
