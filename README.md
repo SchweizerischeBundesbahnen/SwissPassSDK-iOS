@@ -1,67 +1,63 @@
-# SwissPassClient SDK für iOS
+# SwissPassClient SDK v3 for iOS
 
 Copyright (C) Schweizerische Bundesbahnen SBB, 2016-2020
 
-## Übersicht
+## Overview
 
-Das SwissPassClient SDK ermöglicht den mobilen Zugriff auf die SwissPass-Funktionalitäten SwissPass Login und SwissPassMobile.
+Using the SwissPassClient SDK your app can take advantage of SwissPass services for mobile apps, such as SwissPass Login and SwissPass Mobile. 
 
 ### SwissPass Login
 
-Die Authentifizierung eines Benutzers beim SwissPass Login basiert auf dem Protokoll OAuth 2.0 und dem sogenannten Authorization Code Grant. Dieser wurde für die Verwendung mit nativen Apps umgesetzt. Dabei gilt es folgende Punkte zu beachten:
+SwissPass Login for mobile apps is based on OAuth 2.0, which is the industry-standard protocol for authorization on mobile devices. 
 
-* Wird ein vom SwissPass Login ausgestelltes Access Token für den Zugriff auf weitere Services resp. Daten verwendet, dann muss dieses den entsprechenden Requests als Bearer Token mitgegeben werden. Siehe dazu RFC 6750 unter https://tools.ietf.org/html/rfc6750. Die App muss in diesem Fall das Fehlerhandling gemäss OAuth 2.0 implementieren.
-* OAuth Bearer Tokens können via Token Introspection beim SwissPass IAM validiert werden, siehe dazu RFC 7662 unter https://tools.ietf.org/html/rfc7662.
-* Wird ein vom SwissPass Login ausgestelltes Access Token via SDK erneuert, dann kann es in seltenen Fällen vorkommen, dass diese Operation fehlschlägt. In diesem Fall wird entweder ein SwissPassLoginError.invalidToken oder ein SwissPassLoginError.invalidGrant vom SDK zurückgegeben und die App muss ein erneutes Login für den Benutzer durchführen. Tritt ein ein SwissPassLoginError.invalidJSON oder ein SwissPassLoginError.unknownError auf, dann kann ein Retry ausgeführt werden (tritt das Problem länger auf, dann sollte SwissPass kontaktiert  werden).
+As such, the SwissPassClient SDK implements the security requirements and other recommendations for mobile applications as described in RFC 8252 "OAuth 2.0 for Native Apps". For example, this includes PKCE according to RFC 7636 "Proof Key for Code Exchange" which is an extension to the Authorization Code flow to prevent several attacks and to be able to securely perform the OAuth exchange from public clients.
 
-### SwissPassMobile
+In addition, please note the following:
 
-Der SwissPassMobile ist eine virtualisierte SwissPass-Karte. Dieser kann mit dem SDK durch den SwissPassMobileViewController angezeigt werden, dabei gilt es folgende Punkte zu beachten:
+* If your app wants to access a protected resource using an access token issued by the SwissPass Login server it must follow the principles described in RFC 6750 "The OAuth 2.0 Authorization Framework: Bearer Token Usage". Particularly, the app must correctly implement the error handling.
+* Access tokens are now by default JSON Web Tokens according to RFC 7519 "JSON Web Token (JWT)". As a consequence, they can either be validated by implementing the checks described in RFC 7519 or by using the SwissPass Login token introspection endpoint, which is based on RFC 7662 "OAuth 2.0 Token Introspection".
+* Starting with version 3.0 the SwissPassClient SDK uses OpenID Connect (OIDC) Core 1.0 which is an identity layer on top of the OAuth 2.0 protocol. However, it does not yet expose the ID token issued by the SwissPass Login server.
 
-* Der SwissPassMobile kann vom Benutzer in bis zu 10 Apps gleichzeitig aktiviert werden. Bei mehr als 10 Aktivierungen werden bereits bestehende Aktivierungen automatisch gelöscht.
-* Bei einem Logout wird die bestehende Aktivierung auf dem SwissPass nicht deaktiviert. Beim darauf folgenden Login wird geprüft ob sich derselbe Benutzer wieder einloggt, falls dies nicht der Fall ist wird der ggf. bestehende SwissPassMobile deaktiviert.
+### SwissPass Mobile
 
-## Verwendung des Frameworks
+SwissPass Mobile enables travelers to display public transport travelcards conveniently on a digital device. 
 
-Das SDK ist in Swift 5 geschrieben und mit *Build Libraries for Distribution* compiliert. Objective-C Compatibility Headers werden dabei nicht installiert.
+* SwissPass Mobile can be integrated into your app in 2 different ways, either as a fullscreen representation using the `SwissPassMobileViewController` or embedded in a custom screen of your app using the `SwissPassMobileCardViewController`. 
+* SwissPass Mobile can be activated by the user in up to 3 different apps simultaneously. In case of a forth activation, the first activation will be deleted automatically.
+* When performing a logout operation, an existing SwissPass Mobile will not be deactivated until another user performs a login operation in the same app. In this case, the existing SwissPassMobile will be deactivated automatically.
 
-Es muss darum sichergestellt werden, dass die *Swift Standard Libraries* auf jeden Fall mit integriert werden. D.h. die Einstellung *Embedded Content Contains Swift Code* (EMBEDDED_CONTENT_CONTAINS_SWIFT) muss auf *YES* gesetzt werden.
+## How to use the SDK
 
-* Bitcode wird ab Version 2.0 unterstützt. 
-* Die allenfalls auftretende Warnung itms-90080 kann ignoriert werden, da Frameworks immer PIE sind; siehe auch [Position Independent Executable](https://developer.apple.com/library/content/qa/qa1788/_index.html#/apple_ref/doc/uid/DTS40013354)
-* Um die FaceID bei der Device Owner Authentication in `requestAuthentication()` verwenden zu können muss im info.plist der Key `NSFaceIDUsageDescription` definiert sein - siehe https://developer.apple.com/documentation/localauthentication/lacontext
+The SwissPassClient SDK is written in Swift 5 and compiled using the option *Build Libraries for Distribution* with deployment target is iOS 11. It is distributed as XCFramework and supports Bitcode. 
 
-### CPU-Architekturen
+In addition:
 
-Das kompilierte Framework kommt mit der Unterstützung für arm64, arm7 sowie x86_64 und i386 (für den Simulator). Beim Upload nach iTunes Connect müssen vorgängig die Architekturen x86_64 und i386 entfernt werden (z.B. mit 'lipo'), ansonsten gibt es einen Fehler itms-90087.
+* Make sure to integrate the *Swift Standard Libraries* in your build. I.e., the option *Embedded Content Contains Swift Code* (EMBEDDED_CONTENT_CONTAINS_SWIFT) must be set to YES.
+* In order to use FaceID in `requestAuthentication()` be sure to specify the key `NSFaceIDUsageDescription` in your info.plist - for more details see https://developer.apple.com/documentation/localauthentication/lacontext
 
-```
-lipo "${SRCROOT}/SwissPassClient.framework/SwissPassClient" -remove "i386" -output "${SRCROOT}/SwissPassClient.framework/SwissPassClient"
-lipo "${SRCROOT}/SwissPassClient.framework/SwissPassClient" -remove "x86_64" -output "${SRCROOT}/SwissPassClient.framework/SwissPassClient"
-```
 ### CocoaPods
 
-Das Framework kann mit CocoaPods direkt in den Build-Prozess integriert werden.
+The SDK can be integrated into your build process as a framework using CocoaPods.
 
 ```
-platform :ios, '9.0'
+platform :ios, '11.0'
 inhibit_all_warnings!
 
 source 'https://github.com/SchweizerischeBundesbahnen/SBBCocoaPods-Ext.git'
 
 target 'MyAppUsingSwissPassClient' do
-pod 'SwissPassClient', '~> 2.3.5'
+pod 'SwissPassClient', '~> 3.0.0'
 end
 ```
 
-### Anforderungen
+## Additional information
 
-Grundsätzlich gelten folgende Anforderungen:
-* iOS 9.0+
-* Swift 5.1 (Xcode 11.0) 
+Further documentation is available on the NOVA UserGroup website.
 
-## Weiterführende Informationen
+### Contact
 
-### Kontakt
+General inquiries, suggestions and feedback can be made via the NOVA UserGroup website or the SwissPass Alliance.
 
-Allgemeine Anfragen, Anregungen und Feedback können über die NOVA UserGroup resp. den SwissPass gemacht werden.
+### Example
+
+A demo app is available in source form on https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS.
