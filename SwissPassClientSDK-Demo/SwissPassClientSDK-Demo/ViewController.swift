@@ -38,9 +38,9 @@ class ViewController: UIViewController {
                 switch result {
                 case .failure(let error):
                     switch error {
-                    case SwissPassLoginError.invalidGrant:
+                    case SwissPassLoginError.tokenError(.invalidGrant):
                         break
-                    case SwissPassLoginError.invalidToken:
+                    case SwissPassLoginError.tokenError(.invalidToken):
                         break
                     default:
                         self.performSegue(withIdentifier: "ShowTableViewControllerSegue", sender: nil)

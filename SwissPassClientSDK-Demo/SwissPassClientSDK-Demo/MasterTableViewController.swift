@@ -35,13 +35,11 @@ class MasterTableViewController: UITableViewController {
         enum OperationsRow: Int {
             case refresh
             case authenticateDeviceOwner
-            case authenticatePassword
             
             var string: String {
                 get {
                     switch self {
                     case .refresh: return "Renew token"
-                    case .authenticatePassword: return "Confirmation (Password)"
                     case .authenticateDeviceOwner: return "Confirmation (Device Owner)"
                     }
                 }
@@ -94,7 +92,7 @@ class MasterTableViewController: UITableViewController {
         func rows() -> Int {
             switch self {
             case Section.data: return 2
-            case Section.operations: return 3
+            case Section.operations: return 2
             case Section.swisspass: return 4
             case Section.swisspassmobile: return 2
             }
@@ -154,9 +152,9 @@ class MasterTableViewController: UITableViewController {
         }
     }
     
-    internal func requestAuthenticationUsingDeviceOwnerAuthentication(_ flag: Bool) {
+    internal func requestAuthenticationUsingDeviceOwnerAuthentication() {
         if let client = SwissPassClientManager.shared.loginClient {
-            client.requestAuthentication(self, usingDeviceOwnerAuthentication: flag, userInfoText: "Confirmation", completionHandler: { (result) in
+            client.requestAuthentication(self, usingAuthenticationMethod: .deviceOwnerAuthentication, userInfoText: "Confirmation", completionHandler: { (result) in
                 switch result {
                 case .failure(let authenticationError):
                     self.presentAlert(withMessage: authenticationError.localizedDescription, title: "Confirmation failed")
@@ -175,7 +173,7 @@ class MasterTableViewController: UITableViewController {
                 
                 switch result {
                 case .failure(let refreshError):
-                    self.presentAlert(withMessage: refreshError.localizedDescription, title: "Renew failed")
+                    self.presentAlert(withMessage: refreshError.localizedDescription, title: "Refresh failed")
                 case .success(let token):
                     self.accessToken = token
                 }
@@ -188,8 +186,8 @@ class MasterTableViewController: UITableViewController {
         if let client = SwissPassClientManager.shared.loginClient {
             client.openSwissPass(self, withPage: page, completionHandler: { (result) in
                 switch result {
-                case .failure(let error as SwissPassLoginError):
-                    if error != SwissPassLoginError.userAborted {
+                case .failure(let error):
+                    if error != SwissPassLoginError.webSessionClosed {
                         self.presentAlert(withMessage: error.localizedDescription, title: "Error!")
                     }
                 default:
@@ -250,7 +248,7 @@ class MasterTableViewController: UITableViewController {
             // In this method we ask the status of the user's account.
             // Based on the status that we get back, we know if the user is allwed to
             // activate the swisspassmobile or not, so we can prepare the UI accordingly
-            client.requestSwissPassMobileAccountStatus { (result: Result<SwissPassMobileAccountStatus>) in
+            client.requestSwissPassMobileAccountStatus { (result: Result<SwissPassMobileAccountStatus, SwissPassMobileError>) in
                 switch result {
                 case .failure(let error):
                     self.canActivateSwissPass = false
@@ -259,8 +257,6 @@ class MasterTableViewController: UITableViewController {
                     switch status {
                     case .accountBlocked:
                         self.canActivateSwissPass = false
-                    case .activationLimitReached:
-                        self.canActivateSwissPass = true
                     case .activationPossible:
                         self.canActivateSwissPass = true
                     case .noSwissPassCard:
@@ -380,9 +376,7 @@ class MasterTableViewController: UITableViewController {
             let operationsRows = Section.OperationsRow(rawValue: indexPath.row)!
             switch operationsRows {
             case .authenticateDeviceOwner:
-                self.requestAuthenticationUsingDeviceOwnerAuthentication(true)
-            case .authenticatePassword:
-                self.requestAuthenticationUsingDeviceOwnerAuthentication(false)
+                self.requestAuthenticationUsingDeviceOwnerAuthentication()
             case .refresh:
                 self.refreshToken()
             }

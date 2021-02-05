@@ -10,7 +10,7 @@ public class SwissPassClientManager : Logging {
     static let shared = SwissPassClientManager()
 
     // SwissPassLogin
-    let scope: Scope = Scope(withValue: .customer)
+    let scope: Scope = Scope()
     var loginClient: SwissPassLoginClient?
 
     var environment: Environment {
@@ -52,31 +52,27 @@ public class SwissPassClientManager : Logging {
     }
     
     private func createClients(environment: Environment) {
-        do {
-            // Logger
-            ClientFactory.logger = self
+        // Logger
+        ClientFactory.logger = self
 
-            // Login
-            if let redirectURI = URL(string: "sidapp://oauth/callback") {
-                let clientId:String!
-                switch environment {
-                case .development:
-                    clientId = "oauth_tester_test"
-                case .integration:
-                    clientId = "oauth_tester_inte"
-                case .production:
-                    clientId = "oauth_tester"
-                }
-                let settings = try Settings(withClientID: clientId, provider: "oauth_t", redirectURI: redirectURI, environment: environment)
-                
-                self.loginClient = try ClientFactory.createSwissPassLoginClient(withSettings: settings)
+        // Login
+        if let redirectURI = URL(string: "sidapp://oauth/callback") {
+            let clientId:String!
+            switch environment {
+            case .development:
+                clientId = "oauth_tester_test"
+            case .integration:
+                clientId = "oauth_tester_inte"
+            case .production:
+                clientId = "oauth_tester"
             }
-            // SPM
-            if let provider = self.loginClient {
-                self.mobileClient = ClientFactory.createSwissPassMobileClient(withProvider: provider)
-            }
-        } catch {
-            fatalError("Initialisation failed: \(error)")
+            let settings = Settings(withClientID: clientId, provider: "oauth_t", redirectURI: redirectURI, environment: environment)
+            
+            self.loginClient = ClientFactory.createSwissPassLoginClient(withSettings: settings)
+        }
+        // SPM
+        if let provider = self.loginClient {
+            self.mobileClient = ClientFactory.createSwissPassMobileClient(withProvider: provider)
         }
     }
 

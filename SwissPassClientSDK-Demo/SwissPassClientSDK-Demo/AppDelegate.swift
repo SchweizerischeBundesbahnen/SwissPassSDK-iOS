@@ -39,16 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // SwissPass Login requires the app to handle URLs
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        var result = true
-
-        do {
-            try SwissPassClientManager.shared.loginClient?.handleResponse(URL: url, app: app, options: options)
-        } catch {
-            print("URL not handled: \(error)")
-            result = false
-        }
-        
-        return result
+        return SwissPassClientManager.shared.loginClient?.handleResponse(URL: url, app: app, options: options) ?? false
     }
     
     // SwissPassMobile requires periodical updates

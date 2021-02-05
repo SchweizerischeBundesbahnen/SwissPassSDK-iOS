@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwissPassClient",
+        "repositoryURL": "https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS.git",
+        "state": {
+          "branch": null,
+          "revision": "1b668a9e69f1e128c86ceba745180a30f1b34552",
+          "version": "3.0.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

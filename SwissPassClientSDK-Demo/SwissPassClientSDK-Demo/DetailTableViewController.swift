@@ -27,7 +27,7 @@ class DetailTableViewController: UITableViewController {
                     self.present(alert, animated: true, completion: nil)
                 case .success(let userInfo):
                     var array: Array<[String : AnyObject]> = Array()
-                    let dict = userInfo.json
+                    let dict = userInfo.claims
                     for (key, value) in dict {
                         array.append([key: value])
                     }

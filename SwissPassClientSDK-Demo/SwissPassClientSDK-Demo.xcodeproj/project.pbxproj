@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C3C2CB36B82D137C1646E64A /* libPods-SwissPassClientSDK-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E97BFB790FFF2C98D584BF1 /* libPods-SwissPassClientSDK-Demo.a */; };
+		D60D1A8425CDA1D300A1732F /* SwissPassClient in Frameworks */ = {isa = PBXBuildFile; productRef = D60D1A8325CDA1D300A1732F /* SwissPassClient */; };
 		D67EBA822197278C00E3EC14 /* SwissPassClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EBA812197278C00E3EC14 /* SwissPassClientManager.swift */; };
 		D6B34C7C1E5DD3A20013AC6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B34C7B1E5DD3A20013AC6D /* AppDelegate.swift */; };
 		D6B34C7E1E5DD3A20013AC6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B34C7D1E5DD3A20013AC6D /* ViewController.swift */; };
@@ -37,11 +37,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D6F485612541E63E00C26D72 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		005197F720810A1E00807D4E /* SwissPassClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwissPassClient.framework; path = "/Users/terence/Projects/swisspassclientsdk/ios/SwissPassClientSDK-Demo/SwissPassClient.framework"; sourceTree = "<absolute>"; };
-		30F9886DDF2B953647A9C285 /* Pods-SwissPassClientSDK-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwissPassClientSDK-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwissPassClientSDK-Demo/Pods-SwissPassClientSDK-Demo.release.xcconfig"; sourceTree = "<group>"; };
-		6E97BFB790FFF2C98D584BF1 /* libPods-SwissPassClientSDK-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwissPassClientSDK-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A901FC31E627E615C97EE590 /* Pods-SwissPassClientSDK-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwissPassClientSDK-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwissPassClientSDK-Demo/Pods-SwissPassClientSDK-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		D67EBA812197278C00E3EC14 /* SwissPassClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwissPassClientManager.swift; sourceTree = "<group>"; };
 		D6B34C781E5DD3A20013AC6D /* SwissPassClientSDK-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwissPassClientSDK-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B34C7B1E5DD3A20013AC6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3C2CB36B82D137C1646E64A /* libPods-SwissPassClientSDK-Demo.a in Frameworks */,
+				D60D1A8425CDA1D300A1732F /* SwissPassClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,31 +95,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00D08CBE20875B4100D5CB49 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				005197F720810A1E00807D4E /* SwissPassClient.framework */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		05EBF9EBFBA52E3E70E07811 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A901FC31E627E615C97EE590 /* Pods-SwissPassClientSDK-Demo.debug.xcconfig */,
-				30F9886DDF2B953647A9C285 /* Pods-SwissPassClientSDK-Demo.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		1F08683727058552D9F4F58D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6E97BFB790FFF2C98D584BF1 /* libPods-SwissPassClientSDK-Demo.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		D6B34C6F1E5DD3A20013AC6D = {
 			isa = PBXGroup;
 			children = (
@@ -118,9 +102,6 @@
 				D6B34C8F1E5DD3A20013AC6D /* SwissPassClientSDK-DemoTests */,
 				D6B34C9A1E5DD3A20013AC6D /* SwissPassClientSDK-DemoUITests */,
 				D6B34C791E5DD3A20013AC6D /* Products */,
-				00D08CBE20875B4100D5CB49 /* Recovered References */,
-				05EBF9EBFBA52E3E70E07811 /* Pods */,
-				1F08683727058552D9F4F58D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,17 +164,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6B34CA01E5DD3A20013AC6D /* Build configuration list for PBXNativeTarget "SwissPassClientSDK-Demo" */;
 			buildPhases = (
-				317032186F01D75774EA272B /* [CP] Check Pods Manifest.lock */,
 				D6B34C741E5DD3A20013AC6D /* Sources */,
 				D6B34C751E5DD3A20013AC6D /* Frameworks */,
 				D6B34C761E5DD3A20013AC6D /* Resources */,
-				3D7CEA029ABD423171867B76 /* [CP] Embed Pods Frameworks */,
+				D6F485612541E63E00C26D72 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "SwissPassClientSDK-Demo";
+			packageProductDependencies = (
+				D60D1A8325CDA1D300A1732F /* SwissPassClient */,
+			);
 			productName = "SwissPassClientSDK-Demo";
 			productReference = D6B34C781E5DD3A20013AC6D /* SwissPassClientSDK-Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -241,13 +224,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "SBB IT";
 				TargetAttributes = {
 					D6B34C771E5DD3A20013AC6D = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = ZB8B4MY472;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1200;
 						ProvisioningStyle = Manual;
 					};
 					D6B34C8B1E5DD3A20013AC6D = {
@@ -268,14 +251,16 @@
 			};
 			buildConfigurationList = D6B34C731E5DD3A20013AC6D /* Build configuration list for PBXProject "SwissPassClientSDK-Demo" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
 			mainGroup = D6B34C6F1E5DD3A20013AC6D;
+			packageReferences = (
+				D60D1A8225CDA1D300A1732F /* XCRemoteSwiftPackageReference "SwissPassSDK-iOS" */,
+			);
 			productRefGroup = D6B34C791E5DD3A20013AC6D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -313,45 +298,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		317032186F01D75774EA272B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwissPassClientSDK-Demo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3D7CEA029ABD423171867B76 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SwissPassClientSDK-Demo/Pods-SwissPassClientSDK-Demo-frameworks.sh",
-				"${PODS_ROOT}/SwissPassClient/SwissPassClient.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwissPassClient.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwissPassClientSDK-Demo/Pods-SwissPassClientSDK-Demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D6B34C741E5DD3A20013AC6D /* Sources */ = {
@@ -442,6 +388,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -467,7 +414,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -502,6 +449,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -521,10 +469,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -532,9 +481,9 @@
 		};
 		D6B34CA11E5DD3A20013AC6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A901FC31E627E615C97EE590 /* Pods-SwissPassClientSDK-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ZB8B4MY472;
 				ENABLE_BITCODE = YES;
@@ -543,21 +492,26 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "SwissPassClientSDK-Demo/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.sbb.sid.demo.SwissPassClientSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "89dd624c-8572-4180-8643-01c4d8306504";
 				PROVISIONING_PROFILE_SPECIFIER = "SBB Cargo Wildcard Dev *";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		D6B34CA21E5DD3A20013AC6D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30F9886DDF2B953647A9C285 /* Pods-SwissPassClientSDK-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ZB8B4MY472;
@@ -567,12 +521,16 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "SwissPassClientSDK-Demo/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.sbb.sid.demo.SwissPassClientSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "df3bf9c9-e442-4785-a9cb-4aa5e6212ebc";
 				PROVISIONING_PROFILE_SPECIFIER = "SBB Cargo Wildcard Dev *";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -584,7 +542,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = AH7XG99W66;
 				INFOPLIST_FILE = "SwissPassClientSDK-DemoTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.sbb.sid.SwissPassClientSDK-DemoTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -599,7 +561,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = AH7XG99W66;
 				INFOPLIST_FILE = "SwissPassClientSDK-DemoTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.sbb.sid.SwissPassClientSDK-DemoTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -613,7 +579,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = AH7XG99W66;
 				INFOPLIST_FILE = "SwissPassClientSDK-DemoUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.sbb.sid.SwissPassClientSDK-DemoUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -627,7 +597,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = AH7XG99W66;
 				INFOPLIST_FILE = "SwissPassClientSDK-DemoUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.sbb.sid.SwissPassClientSDK-DemoUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -675,6 +649,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D60D1A8225CDA1D300A1732F /* XCRemoteSwiftPackageReference "SwissPassSDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D60D1A8325CDA1D300A1732F /* SwissPassClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D60D1A8225CDA1D300A1732F /* XCRemoteSwiftPackageReference "SwissPassSDK-iOS" */;
+			productName = SwissPassClient;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D6B34C701E5DD3A20013AC6D /* Project object */;
 }
