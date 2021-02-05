@@ -1,6 +1,6 @@
 # SwissPassClient SDK v3 for iOS
 
-Copyright (C) Schweizerische Bundesbahnen SBB, 2016-2020
+Copyright (C) Schweizerische Bundesbahnen SBB, 2016-2021
 
 ## Overview
 
@@ -34,6 +34,14 @@ In addition:
 
 * Make sure to integrate the *Swift Standard Libraries* in your build. I.e., the option *Embedded Content Contains Swift Code* (EMBEDDED_CONTENT_CONTAINS_SWIFT) must be set to YES.
 * In order to use FaceID in `requestAuthentication()` be sure to specify the key `NSFaceIDUsageDescription` in your info.plist - for more details see https://developer.apple.com/documentation/localauthentication/lacontext
+
+### Swift Package Manager
+
+The SDK can be integrated into your build process as an XCFramework using the Swift Package Manager. To do so, just add the package by using the following url
+
+```
+https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS.git
+```
 
 ### CocoaPods
 
