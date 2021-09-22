@@ -64,23 +64,6 @@ profile
 *.hmap
 *.ipa
 
-####
-# CocoaPods
-Pods/
-
-####
-# Carthage
-Cartfile.resolved
-Carthage
-
-####
-# Fastlane
-SwissPassClient/fastlane/report.xml
-SwissPassClient/fastlane/Preview.html
-SwissPassClient/fastlane/screenshots
-SwissPassClient/fastlane/test_output
-SwissPassClient/fastlane/README.md
-
 ###
 # Custom stuff
 Output
