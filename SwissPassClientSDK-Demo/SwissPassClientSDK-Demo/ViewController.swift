@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if let client = SwissPassClientManager.shared.loginClient {
-            client.requestToken(forceRefresh: false, completionHandler: { (result) in
+            client.requestToken(completionHandler: { (result) in
                 switch result {
                 case .failure(let error):
                     switch error {

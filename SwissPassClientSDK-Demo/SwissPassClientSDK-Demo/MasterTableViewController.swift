@@ -21,12 +21,14 @@ class MasterTableViewController: UITableViewController {
         enum DataRow: Int {
             case accessToken
             case userInfo
-            
+            case user
+
             var string: String {
                 get {
                     switch self {
                     case .accessToken: return "Access Token"
                     case .userInfo: return "User Data"
+                    case .user: return "User Identity"
                     }
                 }
             }
@@ -91,7 +93,7 @@ class MasterTableViewController: UITableViewController {
         
         func rows() -> Int {
             switch self {
-            case Section.data: return 2
+            case Section.data: return 3
             case Section.operations: return 2
             case Section.swisspass: return 4
             case Section.swisspassmobile: return 2
@@ -168,7 +170,7 @@ class MasterTableViewController: UITableViewController {
     internal func refreshToken() {
         if let client = SwissPassClientManager.shared.loginClient {
             self.tableView.isUserInteractionEnabled = false;
-            client.requestToken(forceRefresh: true, completionHandler: { (result) in
+            client.requestToken(completionHandler: { (result) in
                 self.tableView.isUserInteractionEnabled = true;
                 
                 switch result {
@@ -300,6 +302,8 @@ class MasterTableViewController: UITableViewController {
                 cell.detailTextLabel?.text = self.accessToken
             case .userInfo:
                 cell = tableView.dequeueReusableCell(withIdentifier: "infoDetailCell", for: indexPath)
+            case .user:
+                cell = tableView.dequeueReusableCell(withIdentifier: "infoDetailCell", for: indexPath)
             }
             cell.textLabel?.text = dataRows.string
         case .operations:
@@ -370,7 +374,10 @@ class MasterTableViewController: UITableViewController {
         switch section {
         case .data:
             if indexPath.row == Section.DataRow.userInfo.rawValue {
-                self.performSegue(withIdentifier: "ShowUserInfoSegue", sender: self)
+                self.performSegue(withIdentifier: "ShowUserInfoSegue", sender: "UserInfo")
+            }
+            else if indexPath.row == Section.DataRow.user.rawValue {
+                self.performSegue(withIdentifier: "ShowUserInfoSegue", sender: "User")
             }
         case .operations:
             let operationsRows = Section.OperationsRow(rawValue: indexPath.row)!
@@ -414,6 +421,21 @@ class MasterTableViewController: UITableViewController {
             return client.isSwissPassMobileAvailable()
         }
         return false
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowUserInfoSegue" {
+            if let destination = segue.destination as? DetailTableViewController {
+                switch sender as? String {
+                case "UserInfo":
+                    destination.mode = .userInfo
+                case "User":
+                    destination.mode = .user
+                default:
+                    fatalError()
+                }
+            }
+        }
     }
 
 }

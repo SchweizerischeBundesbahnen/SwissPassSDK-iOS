@@ -224,7 +224,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "SBB IT";
 				TargetAttributes = {
 					D6B34C771E5DD3A20013AC6D = {
@@ -496,7 +496,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.sbb.sid.demo.SwissPassClientSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "89dd624c-8572-4180-8643-01c4d8306504";
@@ -525,7 +525,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.sbb.sid.demo.SwissPassClientSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "df3bf9c9-e442-4785-a9cb-4aa5e6212ebc";
@@ -655,8 +655,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.2;
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
