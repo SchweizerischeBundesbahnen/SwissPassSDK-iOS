@@ -19,7 +19,8 @@ let package = Package(
     ],
     targets: [
         .binaryTarget(name: "SwissPassClient",
-                      url: "https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS/releases/download/4.0/SwissPassClient_framework-4.0_r220602.1823.13.zip",
-                      checksum: "9467a5fc97b2f5b23ce6f6f5bbd6195e03458f076c8ad543ee434d3e35e00a94"),
+                      url: "https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS/releases/download/4.0/SwissPassClient_framework-4.0_r220602.2059.14.zip",
+                      checksum: "warning: Usage of /Users/admin/Library/org.swift.swiftpm/collections.json has been deprecated. Please delete it and use the new /Users/admin/Library/org.swift.swiftpm/configuration/collections.json instead.
+06f3aa5953fe10c61f35d606b5a304e01b539302c847111674450f2fd9813a9a"),
     ]
 )
