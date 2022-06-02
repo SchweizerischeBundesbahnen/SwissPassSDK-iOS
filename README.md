@@ -1,6 +1,6 @@
 # SwissPassClient SDK v4 for iOS
 
-Copyright (C) Schweizerische Bundesbahnen SBB, 2016-2021
+Copyright (C) Schweizerische Bundesbahnen SBB, 2016-2022
 
 ## Overview
 
