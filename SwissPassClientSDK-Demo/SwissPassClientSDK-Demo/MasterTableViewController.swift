@@ -49,7 +49,6 @@ class MasterTableViewController: UITableViewController {
         }
 
         enum SwissPassRow: Int {
-            case tokenManagement
             case accountManagement
             case loginDataManagement
             case cardLinkingManagement
@@ -57,7 +56,6 @@ class MasterTableViewController: UITableViewController {
             var string: String {
                 get {
                     switch self {
-                    case .tokenManagement: return "Token admin"
                     case .accountManagement: return "User profile"
                     case .loginDataManagement: return "Login-Data"
                     case .cardLinkingManagement: return "Connect the SwissPass-Card"
@@ -95,7 +93,7 @@ class MasterTableViewController: UITableViewController {
             switch self {
             case Section.data: return 3
             case Section.operations: return 2
-            case Section.swisspass: return 4
+            case Section.swisspass: return 3
             case Section.swisspassmobile: return 2
             }
         }
@@ -189,7 +187,10 @@ class MasterTableViewController: UITableViewController {
             client.openSwissPass(self, withPage: page, completionHandler: { (result) in
                 switch result {
                 case .failure(let error):
-                    if error != SwissPassLoginError.webSessionClosed {
+                    switch error {
+                    case .webSessionClosed(let detail):
+                        self.presentAlert(withMessage: "Browser closed \(detail.debugDescription)", title: "Info!")
+                    default:
                         self.presentAlert(withMessage: error.localizedDescription, title: "Error!")
                     }
                 default:
@@ -237,8 +238,8 @@ class MasterTableViewController: UITableViewController {
     internal func showSwissPassMobile() {
         if let client = SwissPassClientManager.shared.mobileClient {
             if client.isSwissPassMobileAvailable() {
-                let swissMobileViewController = SwissPassMobileViewController(withClient: client)
-                self.navigationController?.pushViewController(swissMobileViewController, animated: true)
+                let card = SwissPassMobileViewController(initWithClient: client)
+                self.navigationController?.present(card, animated: true)
             } else {
                 self.presentAlert(withMessage: "You have no SwissPassMobile activated", title: "No SwissPass")
             }
@@ -390,8 +391,6 @@ class MasterTableViewController: UITableViewController {
         case .swisspass:
             let swissPassRows = Section.SwissPassRow(rawValue: indexPath.row)!
             switch swissPassRows {
-            case .tokenManagement:
-                self.openSwissPassPage(.tokenManagement)
             case .accountManagement:
                 self.openSwissPassPage(.accountManagement)
             case .loginDataManagement:

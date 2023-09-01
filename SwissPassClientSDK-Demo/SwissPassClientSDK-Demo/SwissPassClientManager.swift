@@ -68,11 +68,11 @@ public class SwissPassClientManager : Logging {
             }
             let settings = Settings(withClientID: clientId, provider: "oauth_t", redirectURI: redirectURI, environment: environment)
             
-            self.loginClient = ClientFactory.createSwissPassLoginClient(withSettings: settings)
+            self.loginClient = try! ClientFactory.createSwissPassLoginClient(withSettings: settings)
         }
         // SPM
         if let provider = self.loginClient {
-            self.mobileClient = ClientFactory.createSwissPassMobileClient(withProvider: provider)
+            self.mobileClient = try! ClientFactory.createSwissPassMobileClient(withLoginClient: provider)
         }
     }
 
