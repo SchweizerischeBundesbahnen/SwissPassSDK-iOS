@@ -10,16 +10,22 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
+            name: "SwissPassLogin",
+            targets: ["SwissPassLogin"]),
+        .library(
             name: "SwissPassClient",
-            targets: ["SwissPassClient"]),
+            targets: ["SwissPassClient"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
+        .binaryTarget(name: "SwissPassLogin",
+                      url: "https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS/releases/download/4.3.2/SwissPassClient_framework-4.3.2_r240917.1607.11.zip",
+                      checksum: "64b64727e5cbcfe240e7618e0ca0b9f3c012b26e64ddbdafec89d969933d0508"),
         .binaryTarget(name: "SwissPassClient",
-                      url: "https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS/releases/download/4.3.1/SwissPassClient_framework-4.3.1_r240618.0844.10.zip",
-                      checksum: "5e8237db67ac03e9a08d214203a17d156d4cafd7d34cc2ef6937fd0e55794f2d"),
+                      url: "${URL}",
+                      checksum: "${CHECKSUM}")
     ]
 )
