@@ -19,7 +19,7 @@ let package = Package(
     ],
     targets: [
         .binaryTarget(name: "SwissPassClient",
-                      url: "https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS/releases/download/4.4.0/SwissPassClient_framework-4.4.0_r250829.1611.20.zip",
-                      checksum: "f8416c38d7b6ba6ce02d76f6ffbc7556d97e8b9cede8856a7285dbcee3fbd40f")
+                      url: "https://github.com/SchweizerischeBundesbahnen/SwissPassSDK-iOS/releases/download/4.4.1/SwissPassClient_framework-4.4.1_r251104.1655.21.zip",
+                      checksum: "8fca0f31bcf7579df3444353e90212b481f5db6dcc3c5c2347eb6056d346a9a4")
     ]
 )
